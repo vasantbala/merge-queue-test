@@ -6,7 +6,7 @@ package com.example.calculator
  * Modify the same line in two branches to simulate merge conflicts (Scenario 4).
  */
 object Calculator {
-
+    //Add method
     fun add(a: Int, b: Int): Int {
         return a + b
     }
