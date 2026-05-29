@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [main]
+  # merge_group event is required — without this, merge queue CI won't trigger
+  merge_group:
+    branches: [main]
+
+jobs:
+  build:
+    name: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Simulate build
+        run: |
+          echo "Running build for branch: $GITHUB_REF"
+          echo "Event: $GITHUB_EVENT_NAME"
+          sleep 20
+          echo "Build complete."
+
+      - name: Run tests
+        run: |
+          echo "Running tests..."
+          # Scenario 3: create a file named FAIL_TESTS in the repo root to trigger intentional failure
+          if [ -f FAIL_TESTS ]; then
+            echo "FAIL_TESTS file detected — failing intentionally (Scenario 3)"
+            exit 1
+          fi
+          echo "All tests passed."
