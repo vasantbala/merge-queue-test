@@ -4,6 +4,7 @@ package com.example.calculator
  * Simple calculator used as a conflict target for merge queue experiments.
  * Modify individual functions in separate branches to simulate concurrent changes.
  * Modify the same line in two branches to simulate merge conflicts (Scenario 4).
+ * 
  */
 object Calculator {
 
